@@ -1,0 +1,14 @@
+---
+title: "Extended office hours"
+description: "Additional help for the NIMBioS community"
+author: "Brian O'Meara"
+date: "8/24/2026"
+categories:
+  - news
+  - support
+  - rocky
+---
+
+NIMBioS offers research computing support to our community. It's free initially; if it's extensive work (multiple hours on an ongoing basis, such as a component of a grant) we can work up an agreement using our standard rates (but this won't be a surprise bill -- more like "this is going well, let's start a more involved conversation"). Come talk with us! Our research programmer is [Graham Derryberry](https://www.nimbios.org/staff/), who in addition to his work at NIMBioS is an [accomplished researcher](https://scholar.google.com/citations?hl=en&user=34jBN4UAAAAJ&view_op=list_works&sortby=pubdate&inst=9897619243961157265) in his own right. You can schedule a meeting with him for computing help, getting access to the CAS NIMBioS [Rocky Cluster](https://www.nimbios.org/services/), and more at his [scheduling page](https://graham.nimbios.org/), which now features extended hours.
+
+If you have more general questions or requests about NIMBioS, please reach out to interim director [Brian O'Meara](mailto:bomeara@utk.edu), and for queries on our spatial resources (drones! lidar! experts!) reach out to associate director [Mona Papeş](mailto:mpapes@utk.edu).

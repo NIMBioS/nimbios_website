@@ -1,0 +1,16 @@
+---
+title: "2026 Rollie Lamberson Research Award – NIMBioS"
+description: "NIMBioS working group publication wins prestigious award"
+author: "Brian O'Meara"
+date: "8/01/2026"
+categories:
+  - news
+  - impact
+  - publications
+---
+
+A paper from the **Hierarchies in Conservation Working Group** at the **National Institute for Mathematical and Biological Synthesis** just won the Rollie Lamberson Research Award: according to the award’s [website](https://resourcemodeling.org/rollie-lamberson-medal/), this award “is awarded to the best paper published in [*Natural Resource Modeling*](https://onlinelibrary.wiley.com/journal/19397445), selected for exemplifying the society’s and journal’s core mission: advancing the development and analysis of mathematical models to inform resource management and policy. Winning papers will reflect the journal’s interdisciplinary scope, drawing from fields such as forestry, fisheries, sustainability, economics, agriculture, water management, environmental science, and ecology, and contribute to the sustainable use of natural resources in the face of human and environmental pressures.”
+
+This year, the winning paper was Armsworth, P.R., Dilkina, B., Jackson, H., Kroetz, K., Sims, C. 2025. Multilevel decision-making and protected area prioritization. *Natural Resource Modeling*, 38, e70004. <https://doi.org/10.1111/nrm.70004>. According to lead author Dr. Paul Armsworth, “The paper aims examines spatial conservation planning (where should we put protected areas to conserve species and provide benefits to people), a topic where ecologists have promoted optimization methods to help conservation organizations protect more species with their limited resources. However, these methods assume a central planner can decide where on the landscape protection will happen. In contrast, we reconcile conservation planning with the institutional constraints of our federalist system of government. Most new protected areas established in the US depend on inter-governmental grant-giving. The federal government gives grants to states and states decide where to protect, a decision shaped in part by their own priorities. In effect, we replace the scientists’ technocratic recommendation of “optimize” with a more realistic “compromise and optimize”. Through a combination of theory, algebraic example, and simulation, we show that the naïve, technocratic approach risks over-promising what land protection programs can achieve and making wasteful use of limited conservation resources. Our “compromise and optimize” approach offers much greater gains for species. The paper has its origins in a NIMBioS Working Group (Hierarchies in Conservation). The application included in the paper is for the Great Basin, chosen in part because we have other work coming forward exploring these ideas that focuses on other US geographies, including the Appalachians.”
+
+NIMBioS is proud to have helped foster this important work. This is the second such award for NIMBioS affiliates; in [2019](https://resourcemodeling.org/2019-medal-recipients/) a winning paper was Heins, B, Lenhart, S. and Sims, C. 2018. Assessing the economic trade-offs between prevention and suppression of forest fires. *Natural Resource Modeling*, 31, 31, e12159. <https://doi.org/10.1111/nrm.12159>

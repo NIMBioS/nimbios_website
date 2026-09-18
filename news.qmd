@@ -1,0 +1,11 @@
+---
+title: "Latest news"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+---
+
+You can filter and search here, but you can also get the RSS feed at [blog.xml](blog.xml). RSS is a format for distributing new content: it is most commonly used for blogs, but it is also a way things like new episodes of podcasts roll out. [Here](https://www.wired.com/story/best-rss-feed-readers/) (*Wired*, soft paywall) is an accessible overview of RSS and how to read it.
+
