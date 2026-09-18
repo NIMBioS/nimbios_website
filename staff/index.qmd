@@ -5,7 +5,7 @@ title: "Staff"
 
 ## Graham Derryberry
 
-![Photo of Graham Derryberry: bearded man wearing a cap](../images/grahamderryberry.jpg)
+![Photo of Graham Derryberry: bearded man wearing a cap](../images/grahamderryberry.jpg){width=50%}
 
 
 **Research Programmer**

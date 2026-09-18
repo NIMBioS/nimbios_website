@@ -9,7 +9,7 @@ categories:
   - publications
 ---
 
-![A tree map of various topics. Highlights: Environmental sciences ecology (346 papers), Mathematical computational biology (264), Life sciences biomedicine other topics (238), Zoology (238), Mathematics (224), Evolutionary biology (187), Genetics/Heredity (180), Science technology other topics (178), Behavior sciences (143), and Biodiversity conservation (141)](images/institution-trend-tree-map.png)
+![A tree map of various topics. Highlights: Environmental sciences ecology (346 papers), Mathematical computational biology (264), Life sciences biomedicine other topics (238), Zoology (238), Mathematics (224), Evolutionary biology (187), Genetics/Heredity (180), Science technology other topics (178), Behavior sciences (143), and Biodiversity conservation (141)](../../images/institution-trend-tree-map.png)
 
 Tree map of topics in NIMBioS-affiliated papers from Web of Science
 

@@ -24,7 +24,7 @@ website:
           - text: "Legacy Site"
             href: "https://legacy.nimbios.org/"
       - text: "Services"
-        href: index.qmd
+        href: services/index.qmd
       - text: "News"
         href: news.qmd
     right:
@@ -66,7 +66,7 @@ website:
 format:
   html:
     theme:
-      - cosmo
+      - darkly
       - brand
     css: styles.css
     toc: true
