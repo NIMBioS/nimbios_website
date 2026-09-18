@@ -1,0 +1,25 @@
+---
+title: "Staff"
+---
+
+
+## Graham Derryberry
+
+![Photo of Graham Derryberry: bearded man wearing a cap](../images/grahamderryberry.jpg)
+
+
+**Research Programmer**
+
+[Schedule a Meeting](https://graham.nimbios.org/)
+
+<Gderrybe@utk.edu>
+
+Graham Derryberry is the Center-wide Research Programmer at NIMBioS, where he does software consulting for research, with a specialty in adaptation for submission to computing clusters like Rocky. He also assists with hardware and software for data collection in the field and in the lab. Graham earned his Bachelor of Science in Aerospace Engineering from MIT. Graham has an interest in 3D printing, including toys and props for holidays.
+
+## Bridgit Carpenter
+
+**Business Manager**
+
+<bcarpen1@utk.edu>
+
+Bridgit Carpenter is the Assistant Director for the UTK College of Arts & Sciences Financial Support Services. As part of this role, she is serving as NIMBioS' Business Manager, which involves managing budgets for the various grants going through the center, hiring and releasing staff, overseeing inventory, and much more.

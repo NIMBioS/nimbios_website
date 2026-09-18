@@ -1,0 +1,74 @@
+project:
+  type: website
+
+website:
+  title: "NIMBioS"
+
+  navbar:
+    logo: images/nimbios-logo-horizontal-768x230.png
+    logo-alt: "NIMBioS logo"
+    title: false
+    pinned: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        menu:
+          - text: "Welcome / About NIMBioS"
+            href: welcome/index.qmd
+          - text: "Leadership Team"
+            href: leadershipteam/index.qmd
+          - text: "Staff"
+            href: staff/index.qmd
+          - text: "Legacy Site"
+            href: "https://legacy.nimbios.org/"
+      - text: "Services"
+        href: index.qmd
+      - text: "News"
+        href: latestnews/index.qmd
+    right:
+      - icon: linkedin
+        href: "https://www.linkedin.com/company/national-institute-for-mathematical-and-biological-synthesis-nimbios-/"
+        aria-label: LinkedIn
+      - icon: instagram
+        href: "https://www.instagram.com/nimbiosscience/"
+        aria-label: Instagram
+      - icon: facebook
+        href: "https://www.facebook.com/profile.php?id=100086166137147"
+        aria-label: Facebook
+      - icon: rss
+        href: latestnews/index.xml
+        aria-label: RSS
+
+  page-footer:
+    background: light
+    left: |
+      **Mission**<br>
+      Our mission is to foster the growth of transdisciplinary approaches
+      within mathematics and biology.
+    center: |
+      **Contact**<br>
+      [contact@nimbios.org](mailto:contact@nimbios.org)<br>
+      446 Hesler Biology Building<br>
+      University of Tennessee<br>
+      Knoxville, TN 37996-3410<br>
+      Brian O'Meara, Interim Director
+    right: |
+      **NIMBioS**<br>
+      From 2008 until early 2021, NIMBioS was supported by the National
+      Science Foundation through NSF Award #DBI-1300426, with additional
+      support from the University of Tennessee, Knoxville. Any opinions,
+      findings, and conclusions or recommendations expressed in this
+      material are those of the author(s) and do not necessarily reflect
+      the views of the National Science Foundation.
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

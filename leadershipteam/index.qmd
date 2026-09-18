@@ -1,0 +1,24 @@
+---
+title: "Leadership team"
+---
+
+## Dr. Brian O'Meara
+
+![](../images/brianomeara.jpg){fig-alt="Photo of Brian O'Meara." width=50%}
+
+
+Interim Director, NIMBioS
+
+Professor, Ecology and Evolutionary Biology at UTK
+
+<bomeara@utk.edu>
+
+## Dr. Mona Papes
+
+![](../images/monapapes.jpg){fig-alt="Photo of Mona Papes." width=50%}
+
+Director, Spatial Analysis Lab
+
+Professor, Ecology and Evolutionary Biology at UTK
+
+<mpapes@utk.edu>

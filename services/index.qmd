@@ -1,0 +1,47 @@
+---
+title: "Services and Support"
+---
+
+We provide solutions for researchers who are working towards ambitious research goals in the quantitative life sciences. Instead of asking each researcher to re-invent, re-envision, or re-discover best practices for collaborative, multidisciplinary research, we leverage our decade-long experience, our diverse expertise, and an economy of scale to help make audacious goals achievable.
+
+*Hourly consultation rates can be found at the bottom of this page.*
+
+**Rocky High Performance Computing Cluster and Research Programming**
+
+- To provide computing resources needed by quantitative life sciences researchers, we maintain Rocky, a High Performance Computing (HPC) cluster comprised of compute heavy nodes, memory intensive nodes, Ceph storage subsystem, and virtual hosting. We grow and refine these systems over time, according to the needs of our users. By maintaining these resources in-house, we ensure that we can seamlessly guide researchers through their use, lowering the barrier for entry into computational research for life scientists.
+
+- For researchers who may not have the time or expertise to implement and analyze computational models, we can connect you with relevant experts. We have free office hours for small projects. Larger projects can buy out time for each of these professionals, guaranteeing easy access to experienced experts without the need to create new positions, conduct a hiring search outside of the PI’s area of expertise, or compete with permanent offers from industry for the best talent for each new project.
+
+- See a graph of how Rocky is used [through time](http://rocky-web.nimbios.org/pending) and how busy it is [right now](http://rocky-web.nimbios.org/).
+
+**Other**
+
+- For researchers interested in spatial analysis, we offer consulting for data analyses and geospatial modeling, drone data collection, and terrestrial laser scanning (lidar). We maintain dedicated software (e.g., ArcGIS) and an array of geospatial equipment (drones, thermal, multispectral, hyperspectral cameras, lidar scanners), lab bench imaging systems, and accessories.
+
+- We have also previously helped organize working groups. Anyone who wants to get involved should reach out. This is something we’ve done in the past, and if you’re interested, let’s get the conversation started!
+
+## Hourly Consultation & Service Rates
+
+| Service                           | Internal | External - Academic | External - Market |
+| --------------------------------- | -------- | ------------------- | ----------------- |
+| Hourly Consult – Professor        | \$122.00 | \$191.00            | \$208.00          |
+| Hourly Consult – Staff Researcher | \$75.00  | \$115.00            | \$191.00          |
+| Hourly Consult – Staff Admin      | \$44.00  | \$67.00             | \$73.00           |
+| Hourly Consult – Post Doc         | \$50.00  | \$77.00             | \$83.00           |
+| Hourly Consult – Graduate Student | \$35.00  | \$54.00             | \$58.00           |
+| Computer Use or GPS Use           | \$16.00  | \$24.00             | \$24.00           |
+| UAV Flight                        | \$90.00  | \$138.00            | \$149.00          |
+| Multispectral UAV ADDON           | \$44.00  | \$67.00             | \$73.00           |
+| Hyperspectral UAV ADDON           | \$100.00 | \$153.00            | \$166.00          |
+| Terrestrial Scanning              | \$154.00 | \$239.00            | \$259.00          |
+
+## We Have Hosted...
+
+26 Working Groups\
+23 Investigative Workshops\
+27 Postdoctoral Fellows\
+154 Short-term Visitors\
+104+ Educational and Outreach Activities\
+...and a community of over 3,500 participants from 641 Institutions, spanning 54 Countries\
+\
+We have helped support teams as they prepared articles and grant proposals to share the ideas that came out of our meetings, and we are so excited to continue supporting our community.
