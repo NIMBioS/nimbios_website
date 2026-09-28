@@ -2,4 +2,52 @@
 title: "Affiliates"
 ---
 
-Currently updating...
+```{r}
+#| warning: false
+#| echo: false
+
+library(DT)
+library(stringi)
+
+make_link <- function(x, name_string = "OpenAlex") {
+	result <- ""
+	if(nchar(x)>4) {
+		result <- paste0("<a href='", trimws(x), "'>", name_string, "</a>")
+	}	
+	return(result)
+}
+
+
+make_website_link <- function(x, name_string = "OpenAlex") {
+	result <- name_string
+	if(nchar(x)>4) {
+		result <- paste0("<a href='", trimws(x), "'>", name_string, "</a>")
+	}	
+	return(result)
+}
+
+
+
+affiliates <- read.csv("NIMBioS_affiliates.csv")
+for (i in sequence(ncol(affiliates))) {
+	affiliates[,i] <- stringi::stri_encode(affiliates[,i], "", "UTF-8")	# from https://stackoverflow.com/a/23699701
+}
+
+affiliates$Google.scholar.ID.or.URL <- sapply(affiliates$Google.scholar.ID.or.URL, make_link, name_string = "Google Scholar")
+affiliates$Orcid.ID <- sapply(affiliates$Orcid.ID, make_link, name_string = "Orcid")
+affiliates$OpenAlex.ID <- sapply(affiliates$OpenAlex.ID, make_link, name_string = "OpenAlex")
+affiliates$Name <- NA
+
+affiliates$Publications <- ""
+
+for (i in sequence(nrow(affiliates))) {
+	pub_strings <- c(affiliates$Orcid.ID[i], affiliates$Google.scholar.ID.or.URL[i], affiliates$OpenAlex.ID[i])
+	pub_strings <- pub_strings[nchar(pub_strings)>0]
+	affiliates$Publications[i] <- paste(pub_strings, collapse=", ")
+	affiliates$Name[i] <- make_website_link(affiliates$URL.we.should.link.to.for.you[i], affiliates$Your.name[i])
+}
+
+affiliates_display <- data.frame(Name = affiliates$Name, Department = affiliates$Your.department.s..and.other.affiliations, Research=affiliates$Information.about.what.you.study..with.a.focus.on.math..biology..modeling..and.similar, Publications=affiliates$Publications)
+
+DT::datatable(affiliates_display, escape = FALSE)
+```

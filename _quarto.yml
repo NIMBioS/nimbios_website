@@ -4,9 +4,12 @@ project:
 
 website:
   title: "NIMBioS"
+  llms-txt: true
+
 
   navbar:
     logo: images/nimbios-logo-horizontal-768x230.png
+    logo-height: 230
     logo-alt: "NIMBioS logo"
     title: false
     pinned: true
@@ -23,6 +26,8 @@ website:
             href: staff/index.qmd
           - text: "Legacy Site"
             href: "https://legacy.nimbios.org/"
+      - text: "Affiliates"
+        href: affiliates/index.qmd
       - text: "Services"
         href: services/index.qmd
       - text: "News"
@@ -46,7 +51,7 @@ website:
     left: |
       **Mission**<br>
       Our mission is to foster the growth of transdisciplinary approaches
-      within mathematics and biology.
+      within mathematics and biology. We are a [research institute](https://artsci.utk.edu/research-and-creative-activity/research-centers-and-institutes/) within the [College of Arts and Sciences](https://artsci.utk.edu) of the [University of Tennessee, Knoxville](https://www.utk.edu).
     center: |
       **Contact**<br>
       [contact@nimbios.org](mailto:contact@nimbios.org)<br>

@@ -42,39 +42,11 @@
     "text": "Dr. Mona Papes\n\nDirector, Spatial Analysis Lab\nProfessor, Ecology and Evolutionary Biology at UTK\nmpapes@utk.edu"
   },
   {
-    "objectID": "affiliates/index.html",
-    "href": "affiliates/index.html",
-    "title": "Affiliates",
+    "objectID": "welcome/index.html",
+    "href": "welcome/index.html",
+    "title": "Welcome",
     "section": "",
-    "text": "Currently updating…"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "NIMBioS",
-    "section": "",
-    "text": "Thousands of scientists have participated in our working groups, postdoctoral positions, tutorials, webinars, and more. We have also been a fertile ground for launching new initiatives, including the Center for the Dynamics of Social Complexity (DySoC), the Center for Analysis and Prediction of Pandemic Expansion (APPEX), and the Synergy Evaluation Institute (formerly NISER).\nWe maintain robust facilities for scientific computing (including our cluster Rocky, with 580 CPU and 4.5 TB RAM), and remote sensing. For more about our activities and opportunities, please peruse our menus above. Welcome!"
-  },
-  {
-    "objectID": "posts/extended_office_hours/index.html",
-    "href": "posts/extended_office_hours/index.html",
-    "title": "Extended office hours",
-    "section": "",
-    "text": "NIMBioS offers research computing support to our community. It’s free initially; if it’s extensive work (multiple hours on an ongoing basis, such as a component of a grant) we can work up an agreement using our standard rates (but this won’t be a surprise bill – more like “this is going well, let’s start a more involved conversation”). Come talk with us! Our research programmer is Graham Derryberry, who in addition to his work at NIMBioS is an accomplished researcher in his own right. You can schedule a meeting with him for computing help, getting access to the CAS NIMBioS Rocky Cluster, and more at his scheduling page, which now features extended hours.\nIf you have more general questions or requests about NIMBioS, please reach out to interim director Brian O’Meara, and for queries on our spatial resources (drones! lidar! experts!) reach out to associate director Mona Papeş."
-  },
-  {
-    "objectID": "posts/nimbios_papers/index.html",
-    "href": "posts/nimbios_papers/index.html",
-    "title": "NIMBioS papers",
-    "section": "",
-    "text": "A tree map of various topics. Highlights: Environmental sciences ecology (346 papers), Mathematical computational biology (264), Life sciences biomedicine other topics (238), Zoology (238), Mathematics (224), Evolutionary biology (187), Genetics/Heredity (180), Science technology other topics (178), Behavior sciences (143), and Biodiversity conservation (141)\n\n\nTree map of topics in NIMBioS-affiliated papers from Web of Science\nNIMBioS continues to lead to discoveries. Here are some ways to keep on top of them:\n\nOpenAlex: Look at products with NIMBioS as an institution or funder.\nGoogle Scholar: Page with results featuring “NIMBioS”."
-  },
-  {
-    "objectID": "posts/2026-rollie-lamberson-research-award/index.html",
-    "href": "posts/2026-rollie-lamberson-research-award/index.html",
-    "title": "2026 Rollie Lamberson Research Award – NIMBioS",
-    "section": "",
-    "text": "A paper from the Hierarchies in Conservation Working Group at the National Institute for Mathematical and Biological Synthesis just won the Rollie Lamberson Research Award: according to the award’s website, this award “is awarded to the best paper published in Natural Resource Modeling, selected for exemplifying the society’s and journal’s core mission: advancing the development and analysis of mathematical models to inform resource management and policy. Winning papers will reflect the journal’s interdisciplinary scope, drawing from fields such as forestry, fisheries, sustainability, economics, agriculture, water management, environmental science, and ecology, and contribute to the sustainable use of natural resources in the face of human and environmental pressures.”\nThis year, the winning paper was Armsworth, P.R., Dilkina, B., Jackson, H., Kroetz, K., Sims, C. 2025. Multilevel decision-making and protected area prioritization. Natural Resource Modeling, 38, e70004. https://doi.org/10.1111/nrm.70004. According to lead author Dr. Paul Armsworth, “The paper aims examines spatial conservation planning (where should we put protected areas to conserve species and provide benefits to people), a topic where ecologists have promoted optimization methods to help conservation organizations protect more species with their limited resources. However, these methods assume a central planner can decide where on the landscape protection will happen. In contrast, we reconcile conservation planning with the institutional constraints of our federalist system of government. Most new protected areas established in the US depend on inter-governmental grant-giving. The federal government gives grants to states and states decide where to protect, a decision shaped in part by their own priorities. In effect, we replace the scientists’ technocratic recommendation of “optimize” with a more realistic “compromise and optimize”. Through a combination of theory, algebraic example, and simulation, we show that the naïve, technocratic approach risks over-promising what land protection programs can achieve and making wasteful use of limited conservation resources. Our “compromise and optimize” approach offers much greater gains for species. The paper has its origins in a NIMBioS Working Group (Hierarchies in Conservation). The application included in the paper is for the Great Basin, chosen in part because we have other work coming forward exploring these ideas that focuses on other US geographies, including the Appalachians.”\nNIMBioS is proud to have helped foster this important work. This is the second such award for NIMBioS affiliates; in 2019 a winning paper was Heins, B, Lenhart, S. and Sims, C. 2018. Assessing the economic trade-offs between prevention and suppression of forest fires. Natural Resource Modeling, 31, 31, e12159. https://doi.org/10.1111/nrm.12159"
+    "text": "A strong foundation, an exciting future\nAs part of a significant step forward in our journey, we rebranded in 2024 and adopted a new name to reflect this new state. We are now the National Institute for Modeling Biological Systems, housed as one of the research centers and institutes within the College of Arts & Sciences at the University of Tennessee, Knoxville. We’re still the NIMBioS you know and love and we are excited for this new chapter together.\nWe celebrate this pivotal point for NIMBioS and we express gratitude toward our founding director Dr. Lou Gross for the solid foundation NIMBioS was built upon.\nBuilding on the strong start in life NIMBioS had as an NSF Synthesis Center, we still foster a vibrant community focused on creating new science with our models. We will continue bringing our community together as an intellectual hub for transdisciplinary research and education in the quantitative life sciences. We are focusing on our unique strength in modeling.\nWe are dedicated to supporting the research community and maintaining our status as an international leader, intellectual center, and emotional heart of the community of mathematical life scientists. How will we do it? We will lower the barriers for students and researchers to learn and accomplish goals within the field.\nSee more of our progress from 2021-4 the NIMBioS Bragbook\n\n\nNIMBioS Legacy Page\nWe wouldn’t be where we are today without all of the great work done by previous NIMBioS staff, leaders, researchers, and students. Our Legacy website contains all archived information dating back to the start of our institute."
   },
   {
     "objectID": "news.html",
@@ -84,11 +56,53 @@
     "text": "You can filter and search here, but you can also get the RSS feed at blog.xml. RSS is a format for distributing new content: it is most commonly used for blogs, but it is also a way things like new episodes of podcasts roll out. Here (Wired, soft paywall) is an accessible overview of RSS and how to read it.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExtended office hours\n\n\n\nnews\n\nsupport\n\nrocky\n\n\n\nAdditional help for the NIMBioS community\n\n\n\n\n\nAug 24, 2026\n\n\nBrian O’Meara\n\n\n\n\n\n\n\n\n\n\n\n\nNIMBioS papers\n\n\n\nnews\n\nimpact\n\npublications\n\n\n\nPublications coming out of NIMBioS\n\n\n\n\n\nAug 10, 2026\n\n\nBrian O’Meara\n\n\n\n\n\n\n\n\n\n\n\n\n2026 Rollie Lamberson Research Award – NIMBioS\n\n\n\nnews\n\nimpact\n\npublications\n\n\n\nNIMBioS working group publication wins prestigious award\n\n\n\n\n\nAug 1, 2026\n\n\nBrian O’Meara\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "welcome/index.html",
-    "href": "welcome/index.html",
-    "title": "Welcome",
+    "objectID": "posts/2026-rollie-lamberson-research-award/index.html",
+    "href": "posts/2026-rollie-lamberson-research-award/index.html",
+    "title": "2026 Rollie Lamberson Research Award – NIMBioS",
     "section": "",
-    "text": "A strong foundation, an exciting future\nAs part of a significant step forward in our journey, we rebranded in 2024 and adopted a new name to reflect this new state. We are now the National Institute for Modeling Biological Systems, housed as one of the research centers and institutes within the College of Arts & Sciences at the University of Tennessee, Knoxville. We’re still the NIMBioS you know and love and we are excited for this new chapter together.\nWe celebrate this pivotal point for NIMBioS and we express gratitude toward our founding director Dr. Lou Gross for the solid foundation NIMBioS was built upon.\nBuilding on the strong start in life NIMBioS had as an NSF Synthesis Center, we still foster a vibrant community focused on creating new science with our models. We will continue bringing our community together as an intellectual hub for transdisciplinary research and education in the quantitative life sciences. We are focusing on our unique strength in modeling.\nWe are dedicated to supporting the research community and maintaining our status as an international leader, intellectual center, and emotional heart of the community of mathematical life scientists. How will we do it? We will lower the barriers for students and researchers to learn and accomplish goals within the field.\nSee more of our progress from 2021-4 the NIMBioS Bragbook\n\n\nNIMBioS Legacy Page\nWe wouldn’t be where we are today without all of the great work done by previous NIMBioS staff, leaders, researchers, and students. Our Legacy website contains all archived information dating back to the start of our institute."
+    "text": "A paper from the Hierarchies in Conservation Working Group at the National Institute for Mathematical and Biological Synthesis just won the Rollie Lamberson Research Award: according to the award’s website, this award “is awarded to the best paper published in Natural Resource Modeling, selected for exemplifying the society’s and journal’s core mission: advancing the development and analysis of mathematical models to inform resource management and policy. Winning papers will reflect the journal’s interdisciplinary scope, drawing from fields such as forestry, fisheries, sustainability, economics, agriculture, water management, environmental science, and ecology, and contribute to the sustainable use of natural resources in the face of human and environmental pressures.”\nThis year, the winning paper was Armsworth, P.R., Dilkina, B., Jackson, H., Kroetz, K., Sims, C. 2025. Multilevel decision-making and protected area prioritization. Natural Resource Modeling, 38, e70004. https://doi.org/10.1111/nrm.70004. According to lead author Dr. Paul Armsworth, “The paper aims examines spatial conservation planning (where should we put protected areas to conserve species and provide benefits to people), a topic where ecologists have promoted optimization methods to help conservation organizations protect more species with their limited resources. However, these methods assume a central planner can decide where on the landscape protection will happen. In contrast, we reconcile conservation planning with the institutional constraints of our federalist system of government. Most new protected areas established in the US depend on inter-governmental grant-giving. The federal government gives grants to states and states decide where to protect, a decision shaped in part by their own priorities. In effect, we replace the scientists’ technocratic recommendation of “optimize” with a more realistic “compromise and optimize”. Through a combination of theory, algebraic example, and simulation, we show that the naïve, technocratic approach risks over-promising what land protection programs can achieve and making wasteful use of limited conservation resources. Our “compromise and optimize” approach offers much greater gains for species. The paper has its origins in a NIMBioS Working Group (Hierarchies in Conservation). The application included in the paper is for the Great Basin, chosen in part because we have other work coming forward exploring these ideas that focuses on other US geographies, including the Appalachians.”\nNIMBioS is proud to have helped foster this important work. This is the second such award for NIMBioS affiliates; in 2019 a winning paper was Heins, B, Lenhart, S. and Sims, C. 2018. Assessing the economic trade-offs between prevention and suppression of forest fires. Natural Resource Modeling, 31, 31, e12159. https://doi.org/10.1111/nrm.12159"
+  },
+  {
+    "objectID": "posts/nimbios_papers/index.html",
+    "href": "posts/nimbios_papers/index.html",
+    "title": "NIMBioS papers",
+    "section": "",
+    "text": "A tree map of various topics. Highlights: Environmental sciences ecology (346 papers), Mathematical computational biology (264), Life sciences biomedicine other topics (238), Zoology (238), Mathematics (224), Evolutionary biology (187), Genetics/Heredity (180), Science technology other topics (178), Behavior sciences (143), and Biodiversity conservation (141)\n\n\nTree map of topics in NIMBioS-affiliated papers from Web of Science\nNIMBioS continues to lead to discoveries. Here are some ways to keep on top of them:\n\nOpenAlex: Look at products with NIMBioS as an institution or funder.\nGoogle Scholar: Page with results featuring “NIMBioS”."
+  },
+  {
+    "objectID": "posts/extended_office_hours/index.html",
+    "href": "posts/extended_office_hours/index.html",
+    "title": "Extended office hours",
+    "section": "",
+    "text": "NIMBioS offers research computing support to our community. It’s free initially; if it’s extensive work (multiple hours on an ongoing basis, such as a component of a grant) we can work up an agreement using our standard rates (but this won’t be a surprise bill – more like “this is going well, let’s start a more involved conversation”). Come talk with us! Our research programmer is Graham Derryberry, who in addition to his work at NIMBioS is an accomplished researcher in his own right. You can schedule a meeting with him for computing help, getting access to the CAS NIMBioS Rocky Cluster, and more at his scheduling page, which now features extended hours.\nIf you have more general questions or requests about NIMBioS, please reach out to interim director Brian O’Meara, and for queries on our spatial resources (drones! lidar! experts!) reach out to associate director Mona Papeş."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "NIMBioS",
+    "section": "",
+    "text": "NIMBioS, the National Institute for Modeling Biological Systems, has long been a center for connecting the worlds of mathematics and biology for better understanding in both basic and applied research. Thousands of scientists have participated in our working groups, postdoctoral positions, tutorials, webinars, and more. We have also been a fertile ground for launching new initiatives, including the Center for the Dynamics of Social Complexity (DySoC), the Center for Analysis and Prediction of Pandemic Expansion (APPEX), and the Synergy Evaluation Institute (formerly NISER).\nWe maintain robust facilities for scientific computing (including our cluster Rocky, with 580 CPU and 4.5 TB RAM), and remote sensing. For more about our activities and opportunities, please peruse our menus above. Welcome!"
+  },
+  {
+    "objectID": "a/index.html",
+    "href": "a/index.html",
+    "title": "Services and Support",
+    "section": "",
+    "text": "We provide solutions for researchers who are working towards ambitious research goals in the quantitative life sciences. Instead of asking each researcher to re-invent, re-envision, or re-discover best practices for collaborative, multidisciplinary research, we leverage our decade-long experience, our diverse expertise, and an economy of scale to help make audacious goals achievable.\nHourly consultation rates can be found at the bottom of this page.\nRocky High Performance Computing Cluster and Research Programming\nOther"
+  },
+  {
+    "objectID": "a/index.html#hourly-consultation-service-rates",
+    "href": "a/index.html#hourly-consultation-service-rates",
+    "title": "Services and Support",
+    "section": "Hourly Consultation & Service Rates",
+    "text": "Hourly Consultation & Service Rates\n\n\n\n\n\n\n\n\n\nService\nInternal\nExternal - Academic\nExternal - Market\n\n\n\n\nHourly Consult – Professor\n$122.00\n$191.00\n$208.00\n\n\nHourly Consult – Staff Researcher\n$75.00\n$115.00\n$191.00\n\n\nHourly Consult – Staff Admin\n$44.00\n$67.00\n$73.00\n\n\nHourly Consult – Post Doc\n$50.00\n$77.00\n$83.00\n\n\nHourly Consult – Graduate Student\n$35.00\n$54.00\n$58.00\n\n\nComputer Use or GPS Use\n$16.00\n$24.00\n$24.00\n\n\nUAV Flight\n$90.00\n$138.00\n$149.00\n\n\nMultispectral UAV ADDON\n$44.00\n$67.00\n$73.00\n\n\nHyperspectral UAV ADDON\n$100.00\n$153.00\n$166.00\n\n\nTerrestrial Scanning\n$154.00\n$239.00\n$259.00"
+  },
+  {
+    "objectID": "a/index.html#we-have-hosted",
+    "href": "a/index.html#we-have-hosted",
+    "title": "Services and Support",
+    "section": "We Have Hosted…",
+    "text": "We Have Hosted…\n26 Working Groups\n23 Investigative Workshops\n27 Postdoctoral Fellows\n154 Short-term Visitors\n104+ Educational and Outreach Activities\n…and a community of over 3,500 participants from 641 Institutions, spanning 54 Countries\n\nWe have helped support teams as they prepared articles and grant proposals to share the ideas that came out of our meetings, and we are so excited to continue supporting our community."
   },
   {
     "objectID": "staff/index.html",

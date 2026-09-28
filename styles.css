@@ -1,1 +1,6 @@
 /* css styles */
+
+.navbar-brand img {
+	width: 300px;
+	height: auto;
+}

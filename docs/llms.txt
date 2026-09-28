@@ -1,0 +1,16 @@
+# NIMBioS
+
+## Pages
+
+- [Services and Support](services/index.llms.md)
+- [Leadership team](leadershipteam/index.llms.md)
+- [Affiliates](affiliates/index.llms.md)
+- [Welcome](welcome/index.llms.md)
+- [Latest news](news.llms.md)
+- [2026 Rollie Lamberson Research Award – NIMBioS](posts/2026-rollie-lamberson-research-award/index.llms.md)
+- [NIMBioS papers](posts/nimbios_papers/index.llms.md)
+- [Extended office hours](posts/extended_office_hours/index.llms.md)
+- [NIMBioS](index.llms.md)
+- [Services and Support](a/index.llms.md)
+- [Staff](staff/index.llms.md)
+- [Impact](impact/index.llms.md)

@@ -1,7 +1,5 @@
----
-title: "NIMBioS"
----
+# NIMBioS
 
 NIMBioS, the National Institute for Modeling Biological Systems, has long been a center for connecting the worlds of mathematics and biology for better understanding in both basic and applied research. Thousands of scientists have participated in our working groups, postdoctoral positions, tutorials, webinars, and more. We have also been a fertile ground for launching new initiatives, including the Center for the Dynamics of Social Complexity ([DySoC](https://dysoc.utk.edu/)), the Center for Analysis and Prediction of Pandemic Expansion ([APPEX](https://appex.org/)), and the [Synergy Evaluation Institute](https://cehhs.utk.edu/synergy/) (formerly NISER).
 
-We maintain robust facilities for scientific computing (including our cluster [Rocky](/computing/), with 580 CPU and 4.5 TB RAM), and remote sensing. For more about our activities and opportunities, please peruse our menus above. Welcome!
+We maintain robust facilities for scientific computing (including our cluster [Rocky](./computing/), with 580 CPU and 4.5 TB RAM), and remote sensing. For more about our activities and opportunities, please peruse our menus above. Welcome!
