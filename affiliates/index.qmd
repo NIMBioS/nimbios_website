@@ -53,6 +53,9 @@ for (i in sequence(nrow(affiliates))) {
 }
 
 affiliates_display <- data.frame(Name = affiliates$Name, Department = affiliates$Your.department.s..and.other.affiliations, Research=affiliates$Information.about.what.you.study..with.a.focus.on.math..biology..modeling..and.similar, Publications=affiliates$Publications)
+last_names <- humaniformat::last_name(affiliates_display$Name)
+affiliates_display <- affiliates_display[order(last_names),]
 
-DT::datatable(affiliates_display, escape = FALSE)
+DT::datatable(affiliates_display, escape = FALSE, style="bootstrap", rownames=FALSE, options = list(paging = FALSE, columnDefs = list(
+    list(width = '200px', targets = 0)))) 
 ```
