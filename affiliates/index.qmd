@@ -28,10 +28,13 @@ make_website_link <- function(x, name_string = "OpenAlex") {
 
 
 
-affiliates <- read.csv("NIMBioS_affiliates.csv")
+affiliates <- read.csv("../NIMBioS_affiliates.csv")
 for (i in sequence(ncol(affiliates))) {
 	affiliates[,i] <- stringi::stri_encode(affiliates[,i], "", "UTF-8")	# from https://stackoverflow.com/a/23699701
 }
+
+output <- data.frame(orcid =  trimws(gsub(".*org/", "", affiliates$Orcid.ID[nchar(affiliates$Orcid.ID)>3])))
+write.csv(output, file="../mathbio/orcid.csv", row.names=FALSE)
 
 affiliates$Google.scholar.ID.or.URL <- sapply(affiliates$Google.scholar.ID.or.URL, make_link, name_string = "Google Scholar")
 affiliates$Orcid.ID <- sapply(affiliates$Orcid.ID, make_link, name_string = "Orcid")
@@ -39,6 +42,8 @@ affiliates$OpenAlex.ID <- sapply(affiliates$OpenAlex.ID, make_link, name_string 
 affiliates$Name <- NA
 
 affiliates$Publications <- ""
+
+
 
 for (i in sequence(nrow(affiliates))) {
 	pub_strings <- c(affiliates$Orcid.ID[i], affiliates$Google.scholar.ID.or.URL[i], affiliates$OpenAlex.ID[i])

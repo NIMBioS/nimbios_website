@@ -20,14 +20,16 @@ website:
         menu:
           - text: "Welcome / About NIMBioS"
             href: welcome/index.qmd
+          - text: "Affiliates"
+            href: affiliates/index.qmd
           - text: "Leadership Team"
             href: leadershipteam/index.qmd
           - text: "Staff"
             href: staff/index.qmd
           - text: "Legacy Site"
             href: "https://legacy.nimbios.org/"
-      - text: "Affiliates"
-        href: affiliates/index.qmd
+      - text: "MathBio"
+        href: mathbio/index.qmd
       - text: "Services"
         href: services/index.qmd
       - text: "News"

@@ -1,0 +1,407 @@
+---
+title: "Recent Publications"
+pagetitle: "Recent Publications"
+description: "The most recent papers from our ORCID iDs, pulled live from the ORCID public API."
+toc: false
+---
+
+The list below is built every time this page loads: the ORCID iDs are read from
+[`orcid.csv`](orcid.csv) and the publication records are fetched live from the
+[ORCID](https://orcid.org) public API. Adding a person to the CSV is all that is
+needed — this page never has to be edited.
+
+::: {#orcid-papers}
+<p class="orcid-status">Reading ORCID list…</p>
+:::
+
+<noscript>
+This list requires JavaScript. The ORCID iDs are listed in
+<a href="orcid.csv">orcid.csv</a>.
+</noscript>
+
+<style>
+#orcid-papers { margin: 1.5rem 0; }
+#orcid-papers ol { list-style: none; padding-left: 0; counter-reset: paper; }
+#orcid-papers li.paper {
+  counter-increment: paper;
+  position: relative;
+  padding: 1rem 1rem 1rem 3.25rem;
+  margin-bottom: .85rem;
+  background: #fff;
+  border: 1px solid #dbe6f0;
+  border-left: 4px solid #4aa3df;
+  border-radius: .375rem;
+}
+#orcid-papers li.paper::before {
+  content: counter(paper);
+  position: absolute;
+  left: 1rem; top: 1rem;
+  width: 1.6rem; height: 1.6rem;
+  display: flex; align-items: center; justify-content: center;
+  background: #0a3b6b; color: #fff;
+  border-radius: 50%;
+  font-size: .8rem; font-weight: 600;
+}
+#orcid-papers .paper-title { font-weight: 600; color: #0a3b6b; line-height: 1.35; }
+#orcid-papers .paper-title a { color: inherit; text-decoration: none; }
+#orcid-papers .paper-title a:hover { text-decoration: underline; }
+#orcid-papers .paper-authors { font-size: .88rem; color: #444; margin-top: .3rem; }
+#orcid-papers .paper-meta { font-size: .85rem; color: #58595b; margin-top: .3rem; }
+#orcid-papers .paper-meta .journal { font-style: italic; }
+#orcid-papers .paper-meta .sep { margin: 0 .45rem; opacity: .5; }
+#orcid-papers .badge-orcid {
+  display: inline-block;
+  background: #eaf3fb; color: #0a3b6b;
+  border: 1px solid #cfe1f2; border-radius: 999px;
+  padding: .05rem .5rem; font-size: .75rem; margin-right: .3rem;
+}
+#orcid-papers .orcid-status { color: #58595b; font-style: italic; }
+#orcid-papers .orcid-error {
+  background: #fdf3f3; border-left: 4px solid #c0392b;
+  padding: .85rem 1rem; border-radius: .375rem; color: #7d2820;
+}
+#orcid-papers .orcid-footnote { font-size: .82rem; color: #58595b; margin-top: 1rem; }
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---- configuration ------------------------------------------------------
+  // orcid.csv is the single source of truth for which ORCID iDs to query.
+  // The same-directory path is tried first; the others are fallbacks for
+  // different deployments / local preview.
+  var CSV_PATHS   = ["orcid.csv",      // same directory as this page
+                     "../orcid.csv",   // one directory up
+                     "/orcid.csv"];    // site root
+  var CSV_COLUMN  = "Orcid ID";  // matched case/punctuation-insensitively
+  var MAX_PAPERS  = 10;          // how many to display
+  var DETAIL_POOL = 18;          // top candidates that get a full-detail fetch
+  var CONCURRENCY = 6;           // simultaneous ORCID requests
+  var API         = "https://pub.orcid.org/v3.0";
+
+  var container = document.getElementById("orcid-papers");
+  if (!container) return;
+
+  function status(msg) {
+    container.innerHTML = '<p class="orcid-status">' + msg + "</p>";
+  }
+
+  function getJSON(url) {
+    return fetch(url, { headers: { Accept: "application/json" } }).then(function (r) {
+      if (!r.ok) throw new Error(url + " returned " + r.status);
+      return r.json();
+    });
+  }
+
+  // ---- CSV parsing --------------------------------------------------------
+  // Full RFC-4180 handling: quoted fields, embedded commas, escaped quotes,
+  // newlines inside quotes, and CRLF line endings.
+  function parseCSV(text) {
+    text = text.replace(/^\uFEFF/, "");           // strip BOM
+    var rows = [], row = [], field = "", inQuotes = false, i = 0;
+
+    while (i < text.length) {
+      var c = text[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (text[i + 1] === '"') { field += '"'; i += 2; continue; }
+          inQuotes = false; i++; continue;
+        }
+        field += c; i++; continue;
+      }
+      if (c === '"') { inQuotes = true; i++; continue; }
+      if (c === ",") { row.push(field); field = ""; i++; continue; }
+      if (c === "\r") { i++; continue; }
+      if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; i++; continue; }
+      field += c; i++;
+    }
+    row.push(field);
+    rows.push(row);
+    return rows.filter(function (r) {
+      return r.some(function (v) { return v.trim() !== ""; });
+    });
+  }
+
+  function normalizeHeader(h) {
+    return String(h).toLowerCase().replace(/[^a-z0-9]/g, "");
+  }
+
+  // Pull the bare 16-digit iD out of whatever the cell contains:
+  // "https://orcid.org/0000-0002-0337-5997", "orcid.org/0000-...", or the raw iD.
+  var ORCID_RE = /(\d{4}-\d{4}-\d{4}-\d{3}[\dX])/i;
+
+  function extractOrcid(cell) {
+    if (!cell) return null;
+    var m = String(cell).match(ORCID_RE);
+    return m ? m[1].toUpperCase() : null;
+  }
+
+  function orcidsFromCSV(text) {
+    var rows = parseCSV(text);
+    if (!rows.length) return [];
+
+    var header  = rows[0].map(normalizeHeader);
+    var wanted  = normalizeHeader(CSV_COLUMN);
+    var col     = header.indexOf(wanted);
+
+    // Fall back to any header merely containing "orcid" (e.g. "ORCID iD (URL)").
+    if (col === -1) {
+      col = header.findIndex(function (h) { return h.indexOf("orcid") !== -1; });
+    }
+
+    var cells;
+    if (col === -1) {
+      // No usable header (or a headerless file): scan every cell, including the
+      // first row, so a plain one-iD-per-line file works too.
+      cells = rows.reduce(function (acc, r) { return acc.concat(r); }, []);
+    } else {
+      cells = rows.slice(1).map(function (r) { return r[col]; });
+    }
+
+    var seen = Object.create(null), out = [];
+    cells.forEach(function (cell) {
+      var id = extractOrcid(cell);
+      if (id && !seen[id]) { seen[id] = true; out.push(id); }
+    });
+    return out;
+  }
+
+  // ---- date handling ------------------------------------------------------
+  // ORCID dates are frequently year-only or year+month. Missing parts sort last
+  // within their year so a dated paper outranks an undated one from the same year.
+  function parseDate(d) {
+    if (!d) return { y: 0, m: 0, day: 0, text: "" };
+    var y = d.year  && d.year.value  ? parseInt(d.year.value, 10)  : 0;
+    var m = d.month && d.month.value ? parseInt(d.month.value, 10) : 0;
+    var g = d.day   && d.day.value   ? parseInt(d.day.value, 10)   : 0;
+    var months = ["", "January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"];
+    var text = "";
+    if (y) text = m ? (months[m] + " " + y) : String(y);
+    return { y: y, m: m, day: g, text: text };
+  }
+
+  function sortKey(p) { return p.date.y * 10000 + p.date.m * 100 + p.date.day; }
+
+  // ---- identifier extraction ---------------------------------------------
+  function externalIds(summary) {
+    var ids = {};
+    var list = (summary["external-ids"] && summary["external-ids"]["external-id"]) || [];
+    list.forEach(function (x) {
+      var type = (x["external-id-type"] || "").toLowerCase();
+      var val  = x["external-id-value"];
+      if (val && !ids[type]) ids[type] = val;
+    });
+    return ids;
+  }
+
+  function bestUrl(ids, summary) {
+    if (ids.doi) {
+      return "https://doi.org/" + ids.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i, "");
+    }
+    if (ids.pmid)  return "https://pubmed.ncbi.nlm.nih.gov/" + ids.pmid + "/";
+    if (ids.arxiv) return "https://arxiv.org/abs/" + ids.arxiv.replace(/^arxiv:/i, "");
+    if (summary.url && summary.url.value) return summary.url.value;
+    return null;
+  }
+
+  // Co-authored papers appear once per ORCID record; collapse them.
+  function dedupeKey(p) {
+    if (p.ids.doi)  return "doi:" + p.ids.doi.toLowerCase().replace(/^https?:\/\/(dx\.)?doi\.org\//i, "");
+    if (p.ids.pmid) return "pmid:" + p.ids.pmid;
+    return "title:" + p.title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
+  // ---- throttled fetching -------------------------------------------------
+  // The CSV can hold many iDs; firing every request at once would get the
+  // browser (or ORCID) to start dropping them.
+  function pool(items, limit, worker) {
+    var results = [], index = 0, active = [];
+    function next() {
+      if (index >= items.length) return null;
+      var i = index++;
+      return Promise.resolve(worker(items[i], i)).then(function (r) { results[i] = r; });
+    }
+    for (var k = 0; k < Math.min(limit, items.length); k++) {
+      active.push((function run() {
+        var p = next();
+        return p ? p.then(run) : Promise.resolve();
+      })());
+    }
+    return Promise.all(active).then(function () { return results; });
+  }
+
+  function fetchWorks(orcid) {
+    return getJSON(API + "/" + orcid + "/works")
+      .then(function (data) {
+        return (data.group || []).map(function (g) {
+          var s = g["work-summary"] && g["work-summary"][0];
+          if (!s) return null;
+          var ids = externalIds(s);
+          return {
+            orcid:   orcid,
+            putCode: s["put-code"],
+            title:   (s.title && s.title.title && s.title.title.value) || "Untitled",
+            journal: (s["journal-title"] && s["journal-title"].value) || "",
+            type:    (s.type || "").replace(/-/g, " ").toLowerCase(),
+            date:    parseDate(s["publication-date"]),
+            ids:     ids,
+            url:     bestUrl(ids, s),
+            authors: null
+          };
+        }).filter(Boolean);
+      })
+      .catch(function (err) {
+        console.warn("ORCID fetch failed for " + orcid, err);
+        return [];   // one unreachable record must not blank the whole list
+      });
+  }
+
+  // ---- contributor filtering ----------------------------------------------
+  // ORCID lists authors AND editors (and other roles) together in the
+  // contributor array. Keep authors; drop anyone whose stated role is editor.
+  // A missing role is treated as author, which is how most records are entered.
+  function isEditorRole(role) {
+    return String(role || "").toLowerCase().indexOf("editor") !== -1;
+  }
+
+  function contributorAuthors(work) {
+    var list = (work.contributors && work.contributors.contributor) || [];
+    var seen = Object.create(null), names = [];
+    list.forEach(function (c) {
+      var name = c["credit-name"] && c["credit-name"].value;
+      if (!name) return;
+      var attrs = c["contributor-attributes"] || {};
+      if (isEditorRole(attrs["contributor-role"])) return;   // skip editors
+      var key = name.toLowerCase();
+      if (!seen[key]) { seen[key] = true; names.push(name); }  // same person, multiple roles
+    });
+    return names;
+  }
+
+  // ---- author lists in bulk ----------------------------------------------
+  // Work summaries omit contributors, so pull details for the shortlist only.
+  // The bulk endpoint accepts up to 100 comma-separated put-codes per iD.
+  function fetchDetails(papers) {
+    var byOrcid = {};
+    papers.forEach(function (p) { (byOrcid[p.orcid] = byOrcid[p.orcid] || []).push(p); });
+
+    return pool(Object.keys(byOrcid), CONCURRENCY, function (orcid) {
+      var group = byOrcid[orcid];
+      var codes = group.map(function (p) { return p.putCode; }).slice(0, 100).join(",");
+      return getJSON(API + "/" + orcid + "/works/" + codes)
+        .then(function (data) {
+          (data.bulk || []).forEach(function (item) {
+            var w = item.work;
+            if (!w) return;
+            var match = group.filter(function (p) { return p.putCode === w["put-code"]; })[0];
+            if (!match) return;
+            var names = contributorAuthors(w);
+            if (names.length) match.authors = names;
+            if (!match.journal && w["journal-title"] && w["journal-title"].value) {
+              match.journal = w["journal-title"].value;
+            }
+          });
+        })
+        .catch(function (err) { console.warn("Detail fetch failed for " + orcid, err); });
+    }).then(function () { return papers; });
+  }
+
+  // ---- rendering ----------------------------------------------------------
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function authorLine(names) {
+    if (!names || !names.length) return "";
+    var shown = names.slice(0, 8).map(esc).join(", ");
+    if (names.length > 8) shown += ", et al.";
+    return '<div class="paper-authors">' + shown + "</div>";
+  }
+
+  function render(papers, orcidCount) {
+    if (!papers.length) {
+      container.innerHTML = '<div class="orcid-error">No publications could be ' +
+        "retrieved from ORCID right now. Please try again later.</div>";
+      return;
+    }
+
+    var html = "<ol>";
+    papers.forEach(function (p) {
+      var title = p.url
+        ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + "</a>"
+        : esc(p.title);
+
+      var meta = [];
+      if (p.journal)   meta.push('<span class="journal">' + esc(p.journal) + "</span>");
+      if (p.date.text) meta.push(esc(p.date.text));
+      if (p.type && p.type !== "journal article") meta.push(esc(p.type));
+
+      html += '<li class="paper">' +
+                '<div class="paper-title">' + title + "</div>" +
+                authorLine(p.authors) +
+                '<div class="paper-meta">' +
+                  '<span class="badge-orcid">ORCID</span>' +
+                  meta.join('<span class="sep">·</span>') +
+                "</div>" +
+              "</li>";
+    });
+    html += "</ol>";
+
+    html += '<p class="orcid-footnote">Aggregated live from ' + orcidCount +
+            " ORCID record" + (orcidCount === 1 ? "" : "s") +
+            "; co-authored papers are listed once and editors are not shown in " +
+            "the author line. Records with no publication date on file may be " +
+            "ordered by year only.</p>";
+
+    container.innerHTML = html;
+  }
+
+  // ---- load the CSV, then run --------------------------------------------
+  function loadCSV(paths) {
+    if (!paths.length) return Promise.reject(new Error("orcid.csv not found"));
+    return fetch(paths[0])
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.text();
+      })
+      .catch(function () { return loadCSV(paths.slice(1)); });
+  }
+
+  loadCSV(CSV_PATHS)
+    .then(function (csv) {
+      var orcids = orcidsFromCSV(csv);
+      if (!orcids.length) {
+        throw new Error("no ORCID iDs found in orcid.csv");
+      }
+      status("Loading publications for " + orcids.length + " ORCID record" +
+             (orcids.length === 1 ? "" : "s") + "…");
+
+      return pool(orcids, CONCURRENCY, fetchWorks).then(function (lists) {
+        var all = lists.reduce(function (a, b) { return a.concat(b); }, []);
+
+        all.sort(function (a, b) { return sortKey(b) - sortKey(a); });
+
+        var seen = Object.create(null), unique = [];
+        all.forEach(function (p) {
+          var k = dedupeKey(p);
+          if (!seen[k]) { seen[k] = true; unique.push(p); }
+        });
+
+        var shortlist = unique.slice(0, Math.max(DETAIL_POOL, MAX_PAPERS));
+        return fetchDetails(shortlist).then(function () {
+          render(shortlist.slice(0, MAX_PAPERS), orcids.length);
+        });
+      });
+    })
+    .catch(function (err) {
+      console.error(err);
+      container.innerHTML = '<div class="orcid-error"><strong>Could not build the ' +
+        "publication list.</strong><br>" + esc(err.message) +
+        "<br>Expected a CSV named <code>orcid.csv</code> containing ORCID iDs.</div>";
+    });
+})();
+</script>

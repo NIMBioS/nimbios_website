@@ -84,25 +84,11 @@
     "text": "NIMBioS, the National Institute for Modeling Biological Systems, has long been a center for connecting the worlds of mathematics and biology for better understanding in both basic and applied research. Thousands of scientists have participated in our working groups, postdoctoral positions, tutorials, webinars, and more. We have also been a fertile ground for launching new initiatives, including the Center for the Dynamics of Social Complexity (DySoC), the Center for Analysis and Prediction of Pandemic Expansion (APPEX), and the Synergy Evaluation Institute (formerly NISER).\nWe maintain robust facilities for scientific computing (including our cluster Rocky, with 580 CPU and 4.5 TB RAM), and remote sensing. For more about our activities and opportunities, please peruse our menus above. Welcome!"
   },
   {
-    "objectID": "a/index.html",
-    "href": "a/index.html",
-    "title": "Services and Support",
+    "objectID": "mathbio/index.html",
+    "href": "mathbio/index.html",
+    "title": "Recent Publications",
     "section": "",
-    "text": "We provide solutions for researchers who are working towards ambitious research goals in the quantitative life sciences. Instead of asking each researcher to re-invent, re-envision, or re-discover best practices for collaborative, multidisciplinary research, we leverage our decade-long experience, our diverse expertise, and an economy of scale to help make audacious goals achievable.\nHourly consultation rates can be found at the bottom of this page.\nRocky High Performance Computing Cluster and Research Programming\nOther"
-  },
-  {
-    "objectID": "a/index.html#hourly-consultation-service-rates",
-    "href": "a/index.html#hourly-consultation-service-rates",
-    "title": "Services and Support",
-    "section": "Hourly Consultation & Service Rates",
-    "text": "Hourly Consultation & Service Rates\n\n\n\n\n\n\n\n\n\nService\nInternal\nExternal - Academic\nExternal - Market\n\n\n\n\nHourly Consult – Professor\n$122.00\n$191.00\n$208.00\n\n\nHourly Consult – Staff Researcher\n$75.00\n$115.00\n$191.00\n\n\nHourly Consult – Staff Admin\n$44.00\n$67.00\n$73.00\n\n\nHourly Consult – Post Doc\n$50.00\n$77.00\n$83.00\n\n\nHourly Consult – Graduate Student\n$35.00\n$54.00\n$58.00\n\n\nComputer Use or GPS Use\n$16.00\n$24.00\n$24.00\n\n\nUAV Flight\n$90.00\n$138.00\n$149.00\n\n\nMultispectral UAV ADDON\n$44.00\n$67.00\n$73.00\n\n\nHyperspectral UAV ADDON\n$100.00\n$153.00\n$166.00\n\n\nTerrestrial Scanning\n$154.00\n$239.00\n$259.00"
-  },
-  {
-    "objectID": "a/index.html#we-have-hosted",
-    "href": "a/index.html#we-have-hosted",
-    "title": "Services and Support",
-    "section": "We Have Hosted…",
-    "text": "We Have Hosted…\n26 Working Groups\n23 Investigative Workshops\n27 Postdoctoral Fellows\n154 Short-term Visitors\n104+ Educational and Outreach Activities\n…and a community of over 3,500 participants from 641 Institutions, spanning 54 Countries\n\nWe have helped support teams as they prepared articles and grant proposals to share the ideas that came out of our meetings, and we are so excited to continue supporting our community."
+    "text": "The list below is built every time this page loads: the ORCID iDs are read from orcid.csv and the publication records are fetched live from the ORCID public API. Adding a person to the CSV is all that is needed — this page never has to be edited.\n\n\nReading ORCID list…\n\n\n\nThis list requires JavaScript. The ORCID iDs are listed in orcid.csv."
   },
   {
     "objectID": "staff/index.html",

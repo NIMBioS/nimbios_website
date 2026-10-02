@@ -11,6 +11,6 @@
 - [NIMBioS papers](posts/nimbios_papers/index.llms.md)
 - [Extended office hours](posts/extended_office_hours/index.llms.md)
 - [NIMBioS](index.llms.md)
-- [Services and Support](a/index.llms.md)
+- [Recent Publications](mathbio/index.llms.md)
 - [Staff](staff/index.llms.md)
 - [Impact](impact/index.llms.md)
