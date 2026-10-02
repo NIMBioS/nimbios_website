@@ -9,7 +9,6 @@ website:
 
   navbar:
     logo: images/nimbios-logo-horizontal-768x230.png
-    logo-height: 230
     logo-alt: "NIMBioS logo"
     title: false
     pinned: true
@@ -77,6 +76,7 @@ format:
       - brand
     css: styles.css
     toc: true
+    page-layout: full
 
 
 
