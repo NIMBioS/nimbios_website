@@ -1,0 +1,205 @@
+---
+title: "NIMBioS affiliates grants"
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Install once if needed:
+# install.packages(c("httr2", "dplyr", "purrr", "stringr", "DT"))
+
+library(httr2)
+library(dplyr)
+library(purrr)
+library(stringr)
+library(DT)
+
+# This path is relative to the directory containing this .qmd file.
+affiliates <- read.csv("../NIMBioS_affiliates.csv", stringsAsFactors = FALSE)
+
+# Prefer a clearly labelled name column; otherwise use the first character column.
+name_column <- names(affiliates)[str_detect(names(affiliates), regex("name", ignore_case = TRUE))][1]
+if (is.na(name_column) || length(name_column) == 0) {
+  name_column <- names(affiliates)[which(vapply(affiliates, is.character, logical(1)))[1]]
+}
+if (is.na(name_column) || length(name_column) == 0) {
+  stop("Could not identify a faculty-name column in ../NIMBioS_affiliates.csv.")
+}
+
+faculty <- affiliates |>
+  transmute(faculty = str_squish(as.character(.data[[name_column]]))) |>
+  filter(!is.na(faculty), faculty != "") |>
+  distinct()
+  
+faculty <- rbind(faculty, data.frame(faculty=c("Nina Fefferman", "Suzanne Lenhart", "Sergey Gavrilets", "Allison Buchan"))) # include past leaders
+
+nsf_endpoint <- "https://api.nsf.gov/services/v1/awards.json"
+utk_awardee <- "University of Tennessee Knoxville"
+
+get_awards <- function(faculty_name, role) {
+  role_parameter <- if (role == "PI") "pdPIName" else "coPDPI"
+  offset <- 0
+  out <- list()
+
+  repeat {
+    query <- list(
+      awardeeName = utk_awardee,
+      ActiveAwards = "true",
+	  ExpiredAwards = "true",
+      rpp = "25",
+      offset = as.character(offset),
+      sortKey = "startDate"
+    )
+    query[[role_parameter]] <- faculty_name
+
+    response <- request(nsf_endpoint) |>
+      req_url_query(!!!query) |>
+      req_perform()
+    payload <- resp_body_json(response, simplifyVector = FALSE)$response
+
+    if (!is.null(payload$serviceNotification)) {
+      stop(payload$serviceNotification[[1]]$notificationMessage)
+    }
+
+    batch <- payload$award %||% list()
+    if (!is.list(batch)) batch <- list(batch)
+    if (length(batch) == 0) break
+
+    out <- c(out, batch)
+    offset <- offset + length(batch)
+    total <- as.integer(payload$metadata$totalCount %||% 0)
+    if (offset >= total) break
+  }
+
+  map_dfr(out, function(x) {
+    tibble(
+      faculty = faculty_name,
+      role = role,
+      award_id = x$id %||% NA_character_,
+      title = x$title %||% NA_character_,
+      awardee = x$awardeeName %||% NA_character_,
+      start_date = x$startDate %||% NA_character_,
+      expiration_date = x$expDate %||% NA_character_,
+      estimated_total = as.numeric(x$estimatedTotalAmt %||% NA_character_),
+      funds_obligated = as.numeric(x$fundsObligatedAmt %||% NA_character_)
+    )
+  })
+}
+
+# httr2's null-coalescing helper is internal; define a local equivalent.
+`%||%` <- function(x, y) if (is.null(x)) y else x
+
+safe_get_awards <- purrr::safely(get_awards, otherwise = tibble())
+
+results_and_errors <- tidyr::crossing(faculty, role = c("PI", "Co-PI")) |>
+  mutate(query = map2(faculty, role, safe_get_awards))
+
+search_errors <- results_and_errors |>
+  transmute(faculty, role, error = map_chr(query, ~ if (is.null(.x$error)) "" else conditionMessage(.x$error))) |>
+  filter(error != "")
+
+results <- results_and_errors |>
+  transmute(data = map(query, "result")) |>
+  tidyr::unnest(data) |>
+  distinct(faculty, role, award_id, .keep_all = TRUE) |>
+  arrange(desc(start_date), faculty)
+  
+results <- results[grepl("Tennessee", results$awardee),]
+
+results <- results[!duplicated(results$award_id),]
+
+results$start_date <- as.Date(results$start_date, format = "%m/%d/%Y")
+results$expiration_date <- as.Date(results$expiration_date, format = "%m/%d/%Y")
+
+results <- arrange(results, desc(start_date))
+results$Current <- "Y"
+results$Current[which(results$expiration_date<Sys.Date())] <- "N"
+results <- results[results$start_date >= as.Date("09/01/2008", format = "%m/%d/%Y"),]
+
+results_current <- subset(results, results$Current=="Y")
+
+money <- function(x) ifelse(is.na(x), "—", paste0("$", format(round(x), big.mark = ",", trim = TRUE)))
+```
+
+## Summary
+
+This is an underestimate: it includes only NSF grants that have gone to current NIMBioS affiliates and/or past NIMBioS leaders with the University of Tennessee, Knoxville, as the awardee.
+
+```{r}
+#| results: asis
+
+unique_awards <- n_distinct(results_current$award_id)
+match_count <- nrow(results_current)
+award_current <- results_current |>
+  distinct(award_id, .keep_all = TRUE) |>
+  summarise(total = sum(estimated_total, na.rm = TRUE)) |>
+  pull(total)
+  
+award_total <- results |>
+  distinct(award_id, .keep_all = TRUE) |>
+  summarise(total = sum(estimated_total, na.rm = TRUE)) |>
+  pull(total)
+
+cat(sprintf(
+  "**%s unique active award%s** · **%s faculty-role match%s** · **%s estimated total across active awards** · **%s estimated total across NIMBioS awards**",
+  format(unique_awards, big.mark = ","), ifelse(unique_awards == 1, "", "s"),
+  format(match_count, big.mark = ","), ifelse(match_count == 1, "", "es"),
+  money(award_current), money(award_total)
+))
+```
+
+## Awards
+
+```{r}
+#| label: awards-table
+
+if (nrow(results) == 0) {
+  cat("No active PI or co-PI matches were returned for the loaded faculty list.")
+} else {
+  display_results <- results |>
+    mutate(
+      `Title` = sprintf(
+        '<a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=%s" target="_blank" rel="noopener">%s</a>',
+        award_id, title
+      ),
+      `Estimated total` = money(estimated_total),
+      `Funds obligated` = money(funds_obligated)
+    ) |>
+    select(
+      Faculty = faculty, `Estimated total`, Role = role, `Title`,
+      Awardee = awardee, `Start date` = start_date, `Expiration date` = expiration_date
+    )
+
+	
+  datatable(
+    display_results,
+    escape = FALSE,
+	style = "bootstrap",
+    rownames = FALSE,
+    filter = "top",
+    extensions = "Buttons",
+    options = list(
+      pageLength = 100,
+      scrollX = TRUE,
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel")
+    )
+  )
+}
+```
+
+```{r}
+#| label: api-errors
+#| results: asis
+
+if (nrow(search_errors) > 0) {
+  cat("## NSF API query errors\n\n")
+  knitr::kable(search_errors)
+}
+```
+

@@ -21,6 +21,8 @@ website:
             href: welcome/index.qmd
           - text: "Affiliates"
             href: affiliates/index.qmd
+          - text: "Grants"
+            href: grants/index.qmd
           - text: "Leadership Team"
             href: leadershipteam/index.qmd
           - text: "Staff"
